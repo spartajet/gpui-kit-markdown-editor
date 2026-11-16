@@ -743,7 +743,7 @@ impl Element for EditorRoot {
             entity.update(cx, |state, cx| {
                 let focus = state.focus_handle.clone();
                 window.focus(&focus, cx);
-                if event.modifiers.secondary() && state.follow_link_at(event.position, cx) {
+                if event.modifiers.secondary(cx) && state.follow_link_at(event.position, cx) {
                     return;
                 }
                 state.dragging = true;
@@ -763,7 +763,7 @@ impl Element for EditorRoot {
             }
             if event.pressed_button.is_none() {
                 entity.update(cx, |state, cx| {
-                    state.hover_at(event.position, event.modifiers.secondary(), cx)
+                    state.hover_at(event.position, event.modifiers.secondary(cx), cx)
                 });
                 return;
             }

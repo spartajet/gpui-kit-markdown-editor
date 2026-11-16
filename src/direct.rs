@@ -165,6 +165,7 @@ impl NodeCache {
                 children: children(self),
                 spread: *spread,
                 checked: *checked,
+                task_marker: None,
                 span: None,
             },
             BlockKindData::CodeBlock { lang, meta } => {
